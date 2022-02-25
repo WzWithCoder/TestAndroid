@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.TestActivity">
+
+    <com.example.wangzheng.widget.LayoutColorFilter
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/status_bar_height"
+        android:orientation="vertical"
+        tools:context=".ui.TestActivity">
+
+        <com.example.wangzheng.widget.round.RoundFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            app:border_color="@android:color/holo_green_light"
+            app:border_fore="true"
+            app:border_width="1dp"
+            app:clip_background="true"
+            app:radius="8dp">
+
+            <com.example.wangzheng.widget.viewpager.AutoScrollViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_red_light"/>
+
+            <com.example.wangzheng.widget.viewpager.SnapIndicator
+                android:id="@+id/simpleIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="15dp"
+                app:shape="semicircle"
+                android:background="#33123456"
+                android:padding="1dp"
+                app:color="#66FFFFFF"
+                app:size="4dp"
+                app:space="4dp"
+                app:widthOffset="7dp"/>
+
+        </com.example.wangzheng.widget.round.RoundFrameLayout>
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/progress_bar_style"
+            android:layout_marginTop="5dp"
+            android:max="1000"
+            android:secondaryProgress="50" />
+
+        <com.example.wangzheng.widget.R_view
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            android:background="#55abcdef"
+            android:visibility="gone"/>
+
+        <com.example.wangzheng.widget.CellEditText
+            android:id="@+id/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:maxLength="6"
+            android:textColor="#FF292929"
+            android:textSize="20sp"
+            app:borderColor="#FFD4D4D4"
+            app:borderRadius="8dp"
+            app:borderSize="1dp"
+            app:focusColor="#FFCC3333"
+            android:text="1234"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/progress_bg"
+                android:divider="@drawable/linearlayout_vertical_divider"
+                android:dividerPadding="1dp"
+                android:orientation="horizontal"
+                android:showDividers="middle">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_launcher" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_launcher" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_launcher" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <com.robinhood.ticker.TickerView
+            android:id="@+id/tickerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:ticker_animationDuration="1500"/>
+
+        <com.example.wangzheng.widget.grid_group.GridGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/orange"
+            android:padding="10dp"
+            app:dividerColor="#ffcc3333"
+            app:dividerSize="2dp"
+            app:horizontalSpacing="10dp"
+            app:numColumns="3"
+            app:verticalSpacing="10dp">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="测试测试测试" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="测试测试测试测试测试测试" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="测试测试测试" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="测试测试测试" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="测试测试测试" />
+
+
+        </com.example.wangzheng.widget.grid_group.GridGroup>
+
+        <com.example.wangzheng.widget.span.GifTextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:breakStrategy="simple"
+            app:action_color="#199CE7"
+            app:action_label="展开"
+            android:lineSpacingMultiplier="1.2"
+            app:ellipsize_color="#333333"
+            app:ellipsize_label="..."
+            android:maxLines="2"
+            android:includeFontPadding="false"
+            android:background="#11abcdef"/>
+
+        <include layout="@layout/test_layout" />
+
+        <com.example.wangzheng.widget.AspectImageView
+            android:id="@+id/xxxxxx"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"/>
+
+    </com.example.wangzheng.widget.LayoutColorFilter>
+
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">YmtServer</string>
+    <string name="app_ymt_api">app_ymt_api</string>
+</resources>

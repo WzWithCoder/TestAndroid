@@ -1,0 +1,24 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion CompileSdkVersion
+    buildToolsVersion BuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion MinSdkVersion
+        targetSdkVersion TargetSdkVersion
+        versionCode 1
+        versionName "1.0"
+    }
+    //注意，这里的配置是为了去除gradle对library module默认只编译release buildType的限制
+    //https://blog.csdn.net/wenyiqingnianiii/article/details/70183816
+}
+
+configurations {
+    flavor1Compile
+    flavor2Compile
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/left"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#00ab00"
+        android:layout_marginLeft="12dp"/>
+
+
+    <ImageView
+        android:id="@+id/right"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#0000ab"
+        android:layout_marginRight="12dp"/>
+
+
+    <TextView
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ab0000"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="60dp"
+        android:text="才能我那次own从未你猜那我那次on我才能玩我匆匆我那次为农村你从我温暖你猜我那次"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

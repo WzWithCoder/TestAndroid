@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="vedio_list">
+        <item>http://media.w3.org/2010/05/sintel/trailer.mp4</item>
+        <item>http://9890.vod.myqcloud.com/9890_4e292f9a3dd011e6b4078980237cc3d3.f20.mp4</item>
+        <item>http://v2.ymatou.com/uploads/20180829/d0a41b9d907569106d29f0933e3e7ea4.mp4</item>
+    </string-array>
+</resources>

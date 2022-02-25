@@ -1,0 +1,13 @@
+include ':lint-module'
+include ':lint-checker'
+include ':app', ':ymtserver', ':annotation-processor',
+        ':kotlin', ':accessibility-service',
+        ':annotation', ':skin', ':opengl'
+
+apply from: "buildScripts/include_with_api.gradle"
+includeWithApi ':pins'
+
+//https://blog.csdn.net/weixin_34221073/article/details/91708724
+//includeBuild('') 复合构建
+//include ':buildSrc'
+include ':spi'

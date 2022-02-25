@@ -1,0 +1,37 @@
+apply plugin: 'java'
+apply plugin: ShadowPlugin
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath Shadow
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+}
+
+shadowJar {
+    baseName = 'aop_agent'
+    classifier = null
+    version = '1.0'
+
+//    exclude('jstl.jar')
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+jar {
+    manifest {
+        attributes(
+                "Premain-Class": "TestAgent",
+                "Agent-Class": "TestAgent",
+                "Can-Redefine-Classes":"true",
+                "Can-Retransform-Classes":"true"
+        )
+    }
+}

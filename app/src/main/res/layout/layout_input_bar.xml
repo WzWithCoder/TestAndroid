@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F6F6F6"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:splitMotionEvents="false"
+    android:padding="7dp">
+
+    <EditText
+        android:id="@+id/input_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:imeOptions="flagNoFullscreen|flagNoExtractUi"
+        android:background="@drawable/input_container_border"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:maxLines="3"
+        android:minHeight="35dp"
+        android:paddingLeft="8dp"
+        android:paddingTop="2dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="2dp"
+        android:textColor="@android:color/black"
+        android:textSize="15sp" />
+
+    <CheckBox
+        android:id="@+id/switch_input"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/switch_input_selector"
+        android:button="@null"
+        android:checked="false"
+        android:clickable="true" />
+
+    <ImageView
+        android:id="@+id/add_button"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/input_add_icon" />
+
+    <TextView
+        android:id="@+id/send_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:text="发送"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+</LinearLayout>

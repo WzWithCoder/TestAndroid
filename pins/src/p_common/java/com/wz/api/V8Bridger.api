@@ -1,0 +1,65 @@
+package com.wz.api;
+
+import android.util.Log;
+
+import com.eclipsesource.v8.V8;
+import com.eclipsesource.v8.V8Object;
+
+/**
+ * https://www.jianshu.com/p/f472c43c16db
+ * Create by wangzheng on 2020/11/11
+ */
+public final class V8Bridger {
+
+    public static double java2Js_eval(String exp) {
+        V8 v8 = V8.createV8Runtime(); // 创建 js 运行时
+        double result = v8.executeDoubleScript(
+                "eval("+exp+")" //执行一段 js 代码
+        );
+        //为 true 则会检查并抛出内存泄露错误（
+        //如果存在的话）便于及时发现
+        v8.release(true);
+        return result;
+    }
+
+    public static void js2Java_println(String str) {
+        V8 v8 = V8.createV8Runtime();
+        //注册到 js 全局函数，函数名为 `println`
+        v8.registerJavaMethod((receiver, parameters)-> {
+            Log.e("V8Bridger","js2Java:println:"
+                    + parameters.get(0));
+        }, "println");
+        v8.executeScript("println('"+str+"')");
+        v8.release(true);
+    }
+
+    public static void registeNativeApi() {
+        final V8 v8 = V8.createV8Runtime();
+
+        V8Object v8NativeApi = new V8Object(v8);
+        v8.add("nativeApi", v8NativeApi);
+
+        NativeModule nativeApi = new NativeModule();
+        v8NativeApi.registerJavaMethod(nativeApi, "log"
+                , "log", new Class<?>[] { String.class });
+        v8NativeApi.registerJavaMethod(nativeApi, "error"
+                , "error", new Class<?>[] { String.class });
+        v8NativeApi.close();
+
+        v8.executeScript("nativeApi.log('hello, world')");
+        v8.executeScript("nativeApi.error('hello, world')");
+
+        v8.release(true);
+    }
+
+
+    private static final class NativeModule {
+        public void log(final String message) {
+            Log.e("V8Bridger","native:log:"+message);
+        }
+        public void error(final String message) {
+            Log.e("V8Bridger","native:error:"+message);
+        }
+    }
+
+}

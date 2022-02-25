@@ -1,0 +1,89 @@
+<com.example.wangzheng.nested_scroll.NestScrollLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:skin="http://schemas.android.com/skin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#123456"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="13dp"
+    app:content_id="@+id/result_text"
+    app:head_id="@+id/head_view"
+    tools:context="com.example.wangzheng.ui.MainActivity">
+    <com.example.wangzheng.widget.round.RoundLinearLayout
+        android:id="@+id/head_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:border_color="@android:color/holo_green_light"
+        app:border_fore="false"
+        app:border_width="2dp"
+        app:radius="13dp">
+
+        <com.example.wangzheng.widget.TestMeasureLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ff0000">
+
+                <TextView
+                    android:id="@+id/textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="TextView" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00ff00">
+
+                <TextView
+                    android:id="@+id/textview2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:lineSpacingMultiplier="1.8"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0000ff">
+
+                <com.example.wangzheng.widget.LineView
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    app:dashColor="@color/orange"
+                    app:dashGap="5dp"
+                    app:dashWidth="5dp" />
+            </FrameLayout>
+        </com.example.wangzheng.widget.TestMeasureLayout>
+    </com.example.wangzheng.widget.round.RoundLinearLayout>
+
+    <Button
+        android:id="@+id/email_sign_in_button"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Button"
+        android:textStyle="bold"
+        android:visibility="visible"
+        skin:enableSkin="true" />
+
+    <com.example.wangzheng.nested_scroll.NestedListView
+        android:id="@+id/result_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:background="#abcdef"
+        android:dividerHeight="5dp"
+        skin:enableSkin="true"
+        android:soundEffectsEnabled="true"/>
+</com.example.wangzheng.nested_scroll.NestScrollLayout>

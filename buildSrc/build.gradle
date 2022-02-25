@@ -1,0 +1,59 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java']
+        groovy.srcDirs = ['src/main/groovy']
+        resources.srcDirs = ['src/main/resources']
+    }
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+
+    implementation 'com.android.tools.build:gradle:4.0.1'
+    implementation 'org.javassist:javassist:3.20.0-GA'
+
+    implementation files(org.gradle.internal.jvm.Jvm.current().toolsJar)
+    //implementation files('libs/tools.jar')
+    ///compile files('libs/aop_agent-1.0.jar')
+
+    implementation files('asm-5.0.4.jar')
+    implementation files('asm-commons-5.0.4.jar')
+    implementation files('asm-util-5.0.4.jar')
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    google()
+}
+
+/*task buildMyJar(type: Jar, dependsOn: ['build']) {
+    //导出的jar文件名称
+    archiveName = 'TestPlugin.jar'
+    //从哪个目录打包jar
+    from('build/classes/main')
+    //导出的jar文件的存放目录（未指定则默认存放在build/libs下）
+    destinationDir = file('build/libs')
+    //去掉不要的类
+    exclude('com/wz/gradle/BuildConfig.class')
+    exclude('com/wz/gradle/BuildConfig\$*.class')
+    exclude('**//*R.class')
+    exclude('**//*R\$*.class')
+    //需要打包的类
+    include('com/wz/gradle*//*.class')
+}*/
+
+/*group='com.wz.gradle'
+version='1.0.0'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repo'))
+        }
+    }
+}*/

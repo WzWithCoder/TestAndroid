@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/panel_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F6F6F6">
+
+    <TextView
+        android:id="@+id/panel1"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:text="表情"
+        android:gravity="center"
+        android:visibility="invisible"
+        tools:visibility="visible"/>
+
+    <TextView
+        android:id="@+id/panel2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="其它"
+        android:paddingTop="100dp"
+        android:paddingBottom="100dp"
+        android:gravity="center"
+        android:visibility="invisible"/>
+</FrameLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.wangzheng.widget.multi_input.ListenKeyboardLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:isScrollContainer="true"
+    android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/content_ryv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#ebebeb" />
+
+    <include layout="@layout/layout_input_bar" />
+
+
+    <com.example.wangzheng.widget.multi_input.MultiPanelLayout
+        android:id="@+id/panel_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fffefefe"
+        android:orientation="vertical">
+
+        <include layout="@layout/merge_panel_content" />
+    </com.example.wangzheng.widget.multi_input.MultiPanelLayout>
+
+</com.example.wangzheng.widget.multi_input.ListenKeyboardLayout>

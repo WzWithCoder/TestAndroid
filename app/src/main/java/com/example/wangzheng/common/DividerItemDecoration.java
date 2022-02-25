@@ -1,0 +1,121 @@
+package com.example.wangzheng.common;
+
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import androidx.annotation.ColorRes;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import android.view.View;
+
+/**
+ * Created by wangzheng
+ */
+public class DividerItemDecoration extends RecyclerView.ItemDecoration {
+
+    private Context mContext;
+    private Drawable mDivider;
+    private int mOrientation;
+    private int mDividerHeight;
+
+    //我们通过获取系统属性中的listDivider来添加，在系统中的AppTheme中设置
+    public static final int[] ATRRS = new int[]{
+            android.R.attr.listDivider, android.R.attr.dividerHeight
+    };
+
+    public DividerItemDecoration(Context context, int orientation) {
+        this.mContext = context;
+        final TypedArray typedArray = context.obtainStyledAttributes(ATRRS);
+        this.mDivider = typedArray.getDrawable(0);
+        this.mDividerHeight = typedArray.getInt(1, 1);
+        typedArray.recycle();
+        setOrientation(orientation);
+    }
+
+    //设置屏幕的方向
+    public void setOrientation(int orientation) {
+        if (orientation != LinearLayoutManager.HORIZONTAL
+                && orientation != LinearLayoutManager.VERTICAL) {
+            throw new IllegalArgumentException("invalid orientation");
+        }
+        mOrientation = orientation;
+    }
+
+    @Override
+    public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+        if (mOrientation == LinearLayoutManager.HORIZONTAL) {
+            drawHorizontalLine(c, parent, state);
+        } else {
+            drawVerticalLine(c, parent, state);
+        }
+    }
+
+    //画横线, 这里的parent其实是显示在屏幕显示的这部分
+    public void drawHorizontalLine(Canvas c, RecyclerView parent, RecyclerView.State state) {
+        int left = parent.getPaddingLeft();
+        int right = parent.getWidth() - parent.getPaddingRight();
+        final int childCount = parent.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View child = parent.getChildAt(i);
+
+            //获得child的布局信息
+            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
+            final int top = child.getBottom() + params.bottomMargin;
+            final int bottom = top + getIntrinsicHeight();
+            mDivider.setBounds(left, top, right, bottom);
+            mDivider.draw(c);
+        }
+    }
+
+    //画竖线
+    public void drawVerticalLine(Canvas c, RecyclerView parent, RecyclerView.State state) {
+        int top = parent.getPaddingTop();
+        int bottom = parent.getHeight() - parent.getPaddingBottom();
+        final int childCount = parent.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            final View child = parent.getChildAt(i);
+
+            //获得child的布局信息
+            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
+            final int left = child.getRight() + params.rightMargin;
+            final int right = left + getIntrinsicWidth();
+            mDivider.setBounds(left, top, right, bottom);
+            mDivider.draw(c);
+        }
+    }
+
+    //由于Divider也有长宽高，每一个Item需要向下或者向右偏移
+    @Override
+    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+        if (mOrientation == LinearLayoutManager.HORIZONTAL) {
+            //画横线，就是往下偏移一个分割线的高度
+            outRect.set(0, 0, 0, getIntrinsicHeight());
+        } else {
+            //画竖线，就是往右偏移一个分割线的宽度
+            outRect.set(0, 0, getIntrinsicWidth(), 0);
+        }
+    }
+
+    private int getIntrinsicHeight() {
+        int height = mDivider.getIntrinsicHeight();
+        return height < 0 ? mDividerHeight : height;
+    }
+
+    private int getIntrinsicWidth() {
+        int width = mDivider.getIntrinsicWidth();
+        return width < 0 ? mDividerHeight : width;
+    }
+
+    public void setDivider(Drawable divider) {
+        if (divider == null) return;
+        this.mDivider = divider;
+    }
+
+    public void setDivider(@ColorRes int colorId, int edgeValue) {
+        mDivider = new ColorDrawable(mContext.getResources().getColor(colorId));
+        mDividerHeight = edgeValue;
+    }
+}

@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+dependencies {
+    implementation project(':annotation')
+    implementation AutoService
+    implementation Javapoet
+    implementation CommonsLang
+    implementation CommonsCollections
+    implementation files(org.gradle.internal.jvm.Jvm.current().toolsJar)
+}
+
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}

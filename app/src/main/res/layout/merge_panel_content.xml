@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:parentTag="com.example.wangzheng.widget.multi_input.MultiPanelLayout">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#d5d3d5" />
+
+    <LinearLayout
+        android:id="@+id/panel_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <View
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="#ff0000" />
+
+        <View
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:background="#ff0000" />
+    </LinearLayout>
+</merge>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.example.wangzheng.widget.arrow.ArrowView
+        android:id="@+id/arrowView"
+        android:layout_width="20dp"
+        android:layout_height="15dp"
+        app:about="up"
+        app:stroke_color="#EE757575"
+        app:stroke_width="1px"
+        app:style="fill" />
+
+    <com.example.wangzheng.widget.round.RoundLinearLayout
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#EE757575"
+        android:padding="8dp"
+        app:radius="8dp">
+
+        <TextView
+            android:id="@+id/tipView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textColor="@android:color/white"
+            android:textSize="12sp" />
+    </com.example.wangzheng.widget.round.RoundLinearLayout>
+</RelativeLayout>

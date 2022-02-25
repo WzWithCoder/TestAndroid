@@ -1,0 +1,60 @@
+ext.includeWithApi = { String moduleName ->
+    //先正常加载这个模块
+    include(moduleName)
+    //找到这个模块的路径
+    String originDir = project(moduleName).projectDir
+    //这个是新的路径
+    String targetDir = "${originDir}-api"
+    //原模块的名字
+    String originName = project(moduleName).name;
+    //新模块的名字
+    def targetModuleName = "${originName}-api"
+    //每次编译删除之前的文件
+    delete(targetDir)
+    //复制文件到新的路径
+    copy() {
+        from originDir
+        into targetDir
+        exclude '**/build/'
+        exclude '**/res/'
+        exclude '**/libs/'
+        include '**/*.api'
+        include '**/AndroidManifest.xml'
+        include 'build.gradle'
+        rename { String fileName ->
+            fileName.replace('api', 'java')
+        }
+    }
+    //修改AndroidManifest包名
+    FileTree manifests = fileTree(targetDir)
+            .include("**/AndroidManifest.xml")
+    manifests.each { File file ->
+        updatePackageName(file);
+    }
+    //删除applicationId
+    FileTree buildGradle = fileTree(targetDir)
+            .include("**/build.gradle")
+    buildGradle.each { File file ->
+        file.eachLine { String line ->
+            if (line.contains(moduleName)) {
+                line = ""
+            }
+            return line
+        }
+    }
+    //正常加载新的模块
+    include ":$targetModuleName"
+}
+
+def updatePackageName(File file) {
+    def parser = new XmlParser().parse(file)
+    def node = parser.attribute('package')
+    def attributes = parser.attributes()
+    attributes.replace('package', "${node}.api")
+    def writer = new PrintWriter(file)
+    def printer = new XmlNodePrinter(writer)
+    printer.print(parser)
+}
+
+
+

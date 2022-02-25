@@ -1,0 +1,20 @@
+
+android {
+    sourceSets {
+        File project = getProjectDir()
+        String src = project.path + "/src"
+        File file = file(src)
+        String[] dirs = file.list()
+        //def dirs = ['main', 'p_widget', 'p_common', 'p_sku', 'p_api']
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            dirs.each { dir ->
+                java.srcDir("src/${dir}/java")
+                res.srcDir("src/${dir}/res")
+                assets.srcDirs("src/${dir}/assets")
+            }
+        }
+    }
+}
+
+
