@@ -15,5 +15,6 @@
 ·Linux端口监听  
 ·java虚拟机代理  
 ·跨进程Binder Service管理  
+·Android虚拟机 方法替换验证  
 ·各种自定义控件  
 ...
